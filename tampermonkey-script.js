@@ -240,6 +240,7 @@
                             pqsSIOPAxhMC9zJLJSZNFURPNqALIFwd: "SpinShop"
                         },
                         inputPlaceholder: 'Select a client key',
+                        confirmButtonText: "Change Client Key",
                         showCancelButton: true,
                     })
 
