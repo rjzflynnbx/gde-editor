@@ -51,7 +51,7 @@
                     Swal.fire({
                         title: 'Add Data Extension',
                         html: `<input type="text" id="dataExtName" class="swal2-input" placeholder="Data Extension Name">
-                                    <input type="text" id="dataExtKey" class="swal2-input" placeholder="Data extension key">
+                                    <input type="text" id="dataExtKey" class="swal2-input" placeholder="Data Extension key">
                                     <input type="text" id="_kv1" class="swal2-input" placeholder="key,value">
                                     <input type="text" id="_kv2" class="swal2-input" placeholder="key,value">
                                     <input type="text" id="_kv3" class="swal2-input" placeholder="key,value">
