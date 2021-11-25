@@ -167,7 +167,7 @@
                     Swal.fire({
                         title: 'Remove Data Extension',
                         html: `<input type="text" id="dataExtName" class="swal2-input" placeholder="Data Extension Name">
-                                <input type="text" id="dataExtRef" class="swal2-input" placeholder="Data extension Ref">
+                                <input type="text" id="dataExtRef" class="swal2-input" placeholder="Data Extension Ref">
                                 `,
                         confirmButtonText: 'Remove Data Extension',
                         focusConfirm: false,
