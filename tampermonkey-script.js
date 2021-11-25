@@ -55,6 +55,10 @@
                                     <input type="text" id="_kv1" class="swal2-input" placeholder="key,value">
                                     <input type="text" id="_kv2" class="swal2-input" placeholder="key,value">
                                     <input type="text" id="_kv3" class="swal2-input" placeholder="key,value">
+                                    <input type="text" id="_kv4" class="swal2-input" placeholder="key,value">
+                                    <input type="text" id="_kv5" class="swal2-input" placeholder="key,value">
+                                    <input type="text" id="_kv6" class="swal2-input" placeholder="key,value">
+                                    <input type="text" id="_kv7" class="swal2-input" placeholder="key,value">
                                     `,
                         confirmButtonText: 'Add Data Extension',
                         focusConfirm: false,
@@ -78,6 +82,18 @@
                             const kv3 = Swal.getPopup().querySelector('#_kv3').value.trim();
                             const kv3_values = kv3.split(",");
 
+                            const kv4 = Swal.getPopup().querySelector('#_kv4').value.trim();
+                            const kv4_values = kv4.split(",");
+
+                            const kv5 = Swal.getPopup().querySelector('#_kv5').value.trim();
+                            const kv5values = kv5.split(",");
+
+                            const kv6 = Swal.getPopup().querySelector('#_kv6').value.trim();
+                            const kv6values = kv6.split(",");
+
+                            const kv7 = Swal.getPopup().querySelector('#_kv7').value.trim();
+                            const kv7values = kv7.split(",");
+
                             var guestRef = window.location.href.split("/")[6].split("?")[0];
 
                             var dataObj = {};
@@ -89,6 +105,18 @@
                             }
                             if (kv3 != null && kv3 != undefined && kv3 != "undefeined") {
                                 dataObj[kv3_values[0]] = kv3_values[1];
+                            }
+                            if (kv4 != null && kv4 != undefined && kv4 != "undefeined") {
+                                dataObj[kv4_values[0]] = kv4_values[1];
+                            }
+                            if (kv5 != null && kv5 != undefined && kv5 != "undefeined") {
+                                dataObj[kv5_values[0]] = kv5_values[1];
+                            }
+                            if (kv6 != null && kv6 != undefined && kv6 != "undefeined") {
+                                dataObj[kv6_values[0]] = kv6_values[1];
+                            }
+                            if (kv7 != null && kv7 != undefined && kv7 != "undefeined") {
+                                dataObj[kv7_values[0]] = kv7_values[1];
                             }
 
                             var currClientKey = localStorage.getItem('bxDataExtensionEditorClientKey');
