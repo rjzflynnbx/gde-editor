@@ -5,7 +5,7 @@ Front end UI for editing GDE's
 
 This is a little script which allows you do edit (add & remove) Guest Data Extensions from the front-end Sitecore CDP app UI.
 
-It adds these three buttons to hte debug screen:
+It adds these three buttons to the debug screen:
 ![enter image description here](https://i.ibb.co/vDBw6j7/Screenshot-2021-11-25-at-13-47-58.png)
 
 # How do I install it?
