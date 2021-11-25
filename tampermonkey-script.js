@@ -86,36 +86,36 @@
                             const kv4_values = kv4.split(",");
 
                             const kv5 = Swal.getPopup().querySelector('#_kv5').value.trim();
-                            const kv5values = kv5.split(",");
+                            const kv5_values = kv5.split(",");
 
                             const kv6 = Swal.getPopup().querySelector('#_kv6').value.trim();
-                            const kv6values = kv6.split(",");
+                            const kv6_values = kv6.split(",");
 
                             const kv7 = Swal.getPopup().querySelector('#_kv7').value.trim();
-                            const kv7values = kv7.split(",");
+                            const kv7_values = kv7.split(",");
 
                             var guestRef = window.location.href.split("/")[6].split("?")[0];
 
                             var dataObj = {};
-                            if (kv1 != null && kv1 != undefined && kv1 != "undefeined") {
+                            if (kv1 != null && kv1 != undefined && kv1 != "undefined") {
                                 dataObj[kv1_values[0]] = kv1_values[1];
                             }
-                            if (kv2 != null && kv2 != undefined && kv2 != "undefeined") {
+                            if (kv2 != null && kv2 != undefined && kv2 != "undefined") {
                                 dataObj[kv2_values[0]] = kv2_values[1];
                             }
-                            if (kv3 != null && kv3 != undefined && kv3 != "undefeined") {
+                            if (kv3 != null && kv3 != undefined && kv3 != "undefined") {
                                 dataObj[kv3_values[0]] = kv3_values[1];
                             }
-                            if (kv4 != null && kv4 != undefined && kv4 != "undefeined") {
+                            if (kv4 != null && kv4 != undefined && kv4 != "undefined") {
                                 dataObj[kv4_values[0]] = kv4_values[1];
                             }
-                            if (kv5 != null && kv5 != undefined && kv5 != "undefeined") {
+                            if (kv5 != null && kv5 != undefined && kv5 != "undefined") {
                                 dataObj[kv5_values[0]] = kv5_values[1];
                             }
-                            if (kv6 != null && kv6 != undefined && kv6 != "undefeined") {
+                            if (kv6 != null && kv6 != undefined && kv6 != "undefined") {
                                 dataObj[kv6_values[0]] = kv6_values[1];
                             }
-                            if (kv7 != null && kv7 != undefined && kv7 != "undefeined") {
+                            if (kv7 != null && kv7 != undefined && kv7 != "undefined") {
                                 dataObj[kv7_values[0]] = kv7_values[1];
                             }
 
