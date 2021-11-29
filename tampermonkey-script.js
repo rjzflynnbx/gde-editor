@@ -270,15 +270,7 @@
                         const { value: clientKey } = await Swal.fire({
                             title: 'Select client key',
                             input: 'select',
-                            inputOptions: {
-                                wjtc2eog1lvueo72kts3mn1ean0nentz: 'BoxeverLabs (SpinAir)',
-                                psfu6uh05hsr9c34rptlr06dn864cqrx: 'PartnerSandbox',
-                                pqsGAMEJ9jsRlJMQPTrnpk0cGxD4ab70: "SpinGaming",
-                                pqsDATA3lw12v5a9rrHPW1c4hET73GxQ: "SpinAir - DC",
-                                pqsFinGP4nW3iqC4JzgRMGZMgODLuDVM: "SpinFinance",
-                                pqsMedIa6PvIs50quSIOAPHcL0TJTQpk: "SpinMedia (SpinCom)",
-                                pqsSIOPAxhMC9zJLJSZNFURPNqALIFwd: "SpinShop"
-                            },
+                            inputOptions: clientKeyMap,
                             inputPlaceholder: 'Select a client key',
                             confirmButtonText: "Change Client Key",
                             showCancelButton: true,
