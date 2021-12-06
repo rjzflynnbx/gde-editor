@@ -47,7 +47,8 @@
                     pqsDATA3lw12v5a9rrHPW1c4hET73GxQ: "Spinair - DC",
                     pqsFinGP4nW3iqC4JzgRMGZMgODLuDVM: "SpinFinance",
                     pqsMedIa6PvIs50quSIOAPHcL0TJTQpk: "SpinMedia",
-                    pqsSIOPAxhMC9zJLJSZNFURPNqALIFwd: "SpinShop"
+                    pqsSIOPAxhMC9zJLJSZNFURPNqALIFwd: "SpinShop",
+                    dpsbx91fh7b0ve3qbfuoa0f7brme513i: "Sitecore Demo PLAY! Summit"
                 }
 
                 var reverseClientKeyMap = reverseObject(clientKeyMap);
