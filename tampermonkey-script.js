@@ -48,7 +48,8 @@
                     pqsFinGP4nW3iqC4JzgRMGZMgODLuDVM: "SpinFinance",
                     pqsMedIa6PvIs50quSIOAPHcL0TJTQpk: "SpinMedia",
                     pqsSIOPAxhMC9zJLJSZNFURPNqALIFwd: "SpinShop",
-                    dpsbx91fh7b0ve3qbfuoa0f7brme513i: "Sitecore Demo PLAY! Summit"
+                    dpsbx91fh7b0ve3qbfuoa0f7brme513i: "Sitecore Demo PLAY! Summit",
+                    pqsHoMeZqwc3fXgLCQs1p21ImhAr6tPL: "SpinHome"
                 }
 
                 var reverseClientKeyMap = reverseObject(clientKeyMap);
