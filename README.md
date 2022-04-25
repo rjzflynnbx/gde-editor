@@ -13,9 +13,9 @@ This is a little script which allows you do edit (add & remove) Guest Data Exten
 
   
 
-It adds these three buttons to the debug screen:
+It adds these three buttons to the properties screen:
 
-![enter image description here](https://i.ibb.co/vDBw6j7/Screenshot-2021-11-25-at-13-47-58.png)
+![enter image description here](https://i.ibb.co/WzzjxQ1/Screenshot-2022-04-25-at-14-24-12.png)
 
   
 
@@ -47,7 +47,7 @@ It's very simple. Watch this 2 minute video:
 
   
 
-https://sitecore.box.com/s/ox0stiw27f8z87aiu80t3cbffj1j8kka
+https://sitecore.box.com/s/47ya16q97wxoulmmz5ckzu16cnq51rrc
 
   
   
