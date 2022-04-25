@@ -1,7 +1,7 @@
 
 # gde-editor
 
-Front end UI for editing Guest Data Extensions GDE's
+Front end UI for editing Guest Data Extensions(GDE's)
 
 https://doc.sitecore.com/cdp/en/developers/sitecore-customer-data-platform--data-model-2-1/sitecore-cdp-guest-data-extension-model-functions-rest-api.html
 
