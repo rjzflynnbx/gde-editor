@@ -36,7 +36,7 @@
 
     function onUrlChange() {
         //console.log('URL changed!', location.href);
-        if (window.location.href.includes("section=debug")) {
+        if (window.location.href.includes("section=properties")) {
             setTimeout(function () {
                 console.log("augment UI...");
 
@@ -88,7 +88,7 @@
                     }
 
                     $("<li class=\"list-group-item\"><a id=\"addDataExtBtn\"  href=\"\"> <i aria-hidden=\"true\" class=\"fas fa-user-plus\"></i> Add GDE <i aria-hidden=\"true\" class=\"fas fa-info-circle icon-size-18 pull-right\"><\/i><\/a><\/li> <li class=\"list-group-item\"><a id=\"removeDataExtBtn\"  href=\"\"> <i aria-hidden=\"true\" class=\"fas fa-user-minus\"></i> Remove GDE <i aria-hidden=\"true\" class=\"fas fa-info-circle icon-size-18 pull-right\"><\/i><\/a><\/li><li class=\"list-group-item\"><a id=\"setClientKey\"  href=\"\"> <i aria-hidden=\"true\" class=\"fas fa-cog\"></i> Client Key <span id=\"_currentClientKey\"> = " + clientKeyMap[currClientKey] + "</span> <i aria-hidden=\"true\" class=\"fas fa-info-circle icon-size-18 pull-right\"><\/i><\/a><\/li>")
-                        .insertAfter($(".list-group-item")[0]);
+                        .insertAfter($("#profile-properties"));
 
                     $("#addDataExtBtn").click(async function (event) {
                         event.preventDefault();
@@ -138,7 +138,7 @@
                                 const kv7 = Swal.getPopup().querySelector('#_kv7').value.trim();
                                 const kv7_values = kv7.split(",");
 
-                                var guestRef = window.location.href.split("/")[6].split("?")[0];
+                                var guestRef = window.location.href.split("/")[5].split("?")[0];
 
                                 var dataObj = {};
                                 if (kv1 != null && kv1 != undefined && kv1 != "undefined") {
@@ -186,7 +186,7 @@
                                         if (res.success == true) {
                                             Swal.fire(
                                                 'Data Extension Created',
-                                                '',
+                                                'refresh the page to see...',
                                                 'success'
                                             )
                                         } else {
@@ -224,7 +224,7 @@
                             if (result.isConfirmed) {
                                 var dataExtName = Swal.getPopup().querySelector('#dataExtName').value;
                                 var dataExtRef = Swal.getPopup().querySelector('#dataExtRef').value;
-                                var guestRef = window.location.href.split("/")[6].split("?")[0];
+                                var guestRef = window.location.href.split("/")[5].split("?")[0];
                                 var currClientKey = localStorage.getItem('bxDataExtensionEditorClientKey');
 
                                 fetch('https://w1x491x7ik.execute-api.eu-west-1.amazonaws.com/default/createDataExtension', {
@@ -247,7 +247,7 @@
                                         if (res.success == true) {
                                             Swal.fire(
                                                 'Data Extension Removed',
-                                                '',
+                                                'refresh page to see...',
                                                 'success'
                                             )
                                         } else {
