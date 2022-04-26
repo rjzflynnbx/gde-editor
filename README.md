@@ -64,4 +64,4 @@ https://sitecore.box.com/s/47ya16q97wxoulmmz5ckzu16cnq51rrc
  - SpinMedia (SpinCom) 
  - SpinShop
 
-(email rif@sitecore.net to add more)
+(email richard.flynn@sitecore.net to add more)
