@@ -40,6 +40,8 @@
             setTimeout(function () {
                 console.log("augment UI...");
 
+                //if you want to add a client key do it here
+                // note that the String value must match exactly what is displayed in the CDP UI
                 const clientKeyMap = {
                     wjtc2eog1lvueo72kts3mn1ean0nentz: 'Boxever Labs (Spinair)',
                     psfu6uh05hsr9c34rptlr06dn864cqrx: 'Partner Sandbox',
