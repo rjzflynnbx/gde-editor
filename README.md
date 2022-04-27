@@ -15,7 +15,7 @@ This is a little script which allows you do edit (add & remove) Guest Data Exten
 
   
 
-It adds these three buttons to the properties screen:
+It adds these three buttons to the properties screen of a Guest profile:
 
 ![enter image description here](https://i.ibb.co/WzzjxQ1/Screenshot-2022-04-25-at-14-24-12.png)
 
