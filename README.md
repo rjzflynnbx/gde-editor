@@ -33,7 +33,7 @@ After that - you need to be in debug mode in the Sitecore CDP app.
 
   
 
-To enable debug mode append "&debug=true" to the URL and refresh.
+To enable debug mode append "&debug=true" to the URL and refresh the page twice.
 
   
 
