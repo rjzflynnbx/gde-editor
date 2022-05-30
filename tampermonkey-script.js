@@ -4,7 +4,7 @@
 // @version      0.1
 // @description  try to take over the world!
 // @author       You
-// @match        https://app.boxever.com/*
+// @match        https://app.boxever.com/#/guests/*
 // @icon         https://www.google.com/s2/favicons?domain=boxever.com
 // @grant        none
 // @require      https://cdn.jsdelivr.net/npm/sweetalert2@11
