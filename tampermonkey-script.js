@@ -35,13 +35,11 @@
     };
 
     function onUrlChange() {
-        //console.log('URL changed!', location.href);
+
         if (window.location.href.includes("section=properties")) {
             setTimeout(function () {
                 console.log("augment UI...");
 
-                //if you want to add a client key do it here
-                // note that the String value must match exactly what is displayed in the CDP UI
                 const clientKeyMap = {
                     wjtc2eog1lvueo72kts3mn1ean0nentz: 'Boxever Labs (Spinair)',
                     psfu6uh05hsr9c34rptlr06dn864cqrx: 'Partner Sandbox',
@@ -56,7 +54,6 @@
                 }
 
                 var reverseClientKeyMap = reverseObject(clientKeyMap);
-                //console.log(reverseClientKeyMap);
 
                 //try and set the correct client key
                 var clientKeyNameFromUI = document.querySelector("#user-account-dropdown-toggle > span").innerHTML;
@@ -67,9 +64,6 @@
                 } else {
                     //try and set client key
                     if (reverseClientKeyMap[clientKeyNameFromUI] != currClientKey) {
-                        console.log(reverseClientKeyMap[clientKeyNameFromUI][0]);
-                        console.log(currClientKey)
-                        //alert("might be wrong client key bro")
                         Swal.fire({
                             title: 'Change GDE Editor Client Key to ' + clientKeyNameFromUI,
                             text: "",
