@@ -4,7 +4,7 @@
 // @version      0.1
 // @description  try to take over the world!
 // @author       You
-// @match        https://app.boxever.com/#/guests/*
+// @match        https://app.boxever.com/*
 // @icon         https://www.google.com/s2/favicons?domain=boxever.com
 // @grant        none
 // @require      https://cdn.jsdelivr.net/npm/sweetalert2@11
@@ -32,21 +32,34 @@
         const url = location.href;
         if (url !== lastUrl) {
             lastUrl = url;
+            //           console.log("MutationObserver 1");
             onUrlChange();
         }
     }).observe(document, { subtree: true, childList: true });
 
     function onUrlChange() {
+        //      console.log("onUrlChange 1");
         if (window.location.href.includes("section=properties")) {
             setTimeout(function () {
+                console.log("onUrlChange 2");
                 augmentUIwithAddAndRmvButtons();
+                addClickListnerForExtDefaultExtension();
             }, 1000);
         }
     }
 
 
-    function augmentUIwithAddAndRmvButtons() {
+    function addClickListnerForExtDefaultExtension() {
+        if (false) {
+            //TODO: proper selector for ext default details btn
+            $("#profile-properties > div > div:nth-child(28) > button").click(function () {
+                alert("Handler for .click() called.");
+            });
+        }
+    }
 
+    function augmentUIwithAddAndRmvButtons() {
+        console.log("augmentUIwithAddAndRmvButtons");
         var reverseClientKeyMap = reverseObject(clientKeyMap);
 
         //try and set the correct client key
