@@ -50,7 +50,7 @@
 
 
     function addClickListnerForExtDefaultExtension() {
-        if (true) {
+        if (false) {
             var isExtUIAugmented = false;
 
             //TODO: proper selector for ext default details btn
