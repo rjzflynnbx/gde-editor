@@ -50,11 +50,58 @@
 
 
     function addClickListnerForExtDefaultExtension() {
-        if (false) {
+        if (true) {
+
+
+            var isExtUIAugmented = false;
+
             //TODO: proper selector for ext default details btn
             $("#profile-properties > div > div:nth-child(28) > button").click(function () {
-                alert("Handler for .click() called.");
+                setTimeout(function () {
+                    if (isExtUIAugmented === false) {
+                        var addAttributeBtnHTML = "<button id=\"addAttributeBtn\" style= \"margin-top:12px\" _ngcontent-nvk-c221=\"\" data-test=\"calculate-audience-button\" bx-save-and-stay-button=\"\" class=\"btn\" _nghost-nvk-c117=\"\"><st-inline-loader _ngcontent-nvk-c117=\"\" class=\"d-flex justify-content-center ng-tns-c116-6 ng-star-inserted\" _nghost-nvk-c116=\"\"><div _ngcontent-nvk-c116=\"\" class=\"ng-tns-c116-6 ng-trigger ng-trigger-loaderAnimation\"><div _ngcontent-nvk-c116=\"\" class=\"d-inline ng-tns-c116-6 ng-star-inserted\" style=\"\"> Add Attribute<\/div><\/st-inline-loader><\/button>";
+                        var saveBtnHTML = "<button id=\"saveExtBtn\" disabled style= \"margin-top:12px\" _ngcontent-nvk-c221=\"\" data-test=\"calculate-audience-button\" bx-save-and-stay-button=\"\" class=\"btn\" _nghost-nvk-c117=\"\"><st-inline-loader _ngcontent-nvk-c117=\"\" class=\"d-flex justify-content-center ng-tns-c116-6 ng-star-inserted\" _nghost-nvk-c116=\"\"><div _ngcontent-nvk-c116=\"\" class=\"ng-tns-c116-6 ng-trigger ng-trigger-loaderAnimation\"><div _ngcontent-nvk-c116=\"\" class=\"d-inline ng-tns-c116-6 ng-star-inserted\" style=\"\"> Save Changes<\/div><\/st-inline-loader><\/button>";
+
+                        var jsonTableSelector = "body > ngb-modal-window > div > div > div > div.modal-body > div > div > st-json-as-table";
+                        $(saveBtnHTML).insertAfter(jsonTableSelector);
+                        $(addAttributeBtnHTML).insertAfter(jsonTableSelector);
+
+                        var deleteBtnHTML = "<i id=\"deleteExtAttrBtn\" style = \"float:right\" _ngcontent-nvk-c236=\"\" aria-hidden=\"true\" class=\"far fa-trash ms-4 text-brand-danger\"><\/i>";
+                        $(".bx-json-as-table-data .ng-star-inserted").append(deleteBtnHTML);
+
+
+                        //click listners
+                        $("#addAttributeBtn").click(function (event) {
+                            event.preventDefault();
+                            // alert("addAttributeBtn");;
+                            var newRowHTML = "<div style=\"border-bottom: 1px solid var(--border-color-light); padding: 5px 20px;\" class=\"bx-json-as-table-key text-truncate ellipsis d-flex align-items-center justify-content-start level-0 ng-star-inserted\"><span _ngcontent-bvx-c176=\"\">key<\/span><\/div>\r\n<div style=\"border-bottom: 1px solid var(--border-color-light); padding: 5px 20px;\" class=\"bx-json-as-table-data ng-star-inserted\"><span _ngcontent-oxc-c176=\"\" class=\"text-break ng-star-inserted\">value<i id=\"deleteExtAttrBtn\" style=\"float:right\" _ngcontent-nvk-c236=\"\" aria-hidden=\"true\" class=\"far fa-trash ms-4 text-brand-danger\"><\/i><\/span><\/div>";
+                            $(".bx-json-as-table").append(newRowHTML);
+                        });
+                        $("#saveExtBtn").click(async function (event) {
+                            event.preventDefault();
+                            alert("saveExtBtn");;
+                        });
+                        $("#deleteExtAttrBtn").click(function (event) {
+                            event.preventDefault();
+                            alert("deleteExtAttrBtn");;
+                            //     $(this).closest('.bx-json-as-table-data').remove()
+                            //    $(this).closest('span').remove()
+                            //    $(this).closest('div .ng-star-inserted').remove()
+
+                            //(this).closest('.bx-json-as-table-key').remove()
+                            //(this).closest('.bx-json-as-table-data').remove()
+                            console.log($(this).parent().parent().prev());
+                            $(this).prev().remove();
+
+                        });
+                    }
+                    isExtUIAugmented = true;
+                }, 1000);
+
             });
+
+
+
         }
     }
 
