@@ -32,16 +32,13 @@
         const url = location.href;
         if (url !== lastUrl) {
             lastUrl = url;
-            //           console.log("MutationObserver 1");
             onUrlChange();
         }
     }).observe(document, { subtree: true, childList: true });
 
     function onUrlChange() {
-        //      console.log("onUrlChange 1");
         if (window.location.href.includes("section=properties")) {
             setTimeout(function () {
-                console.log("onUrlChange 2");
                 augmentUIwithAddAndRmvButtons();
                 addClickListnerForExtDefaultExtension();
             }, 1000);
@@ -50,52 +47,24 @@
 
 
     function addClickListnerForExtDefaultExtension() {
-        if (false) {
+        if (true) {
             var isExtUIAugmented = false;
 
             //TODO: proper selector for ext default details btn
             $("#profile-properties > div > div:nth-child(28) > button").click(function () {
                 setTimeout(function () {
                     if (isExtUIAugmented === false) {
-                       makeTableFieldsEditable();
-                       
-                        //insert add ad save buttons
-                        var addAttributeBtnHTML = "<button id=\"addAttributeBtn\" style= \"margin-top:12px\" _ngcontent-nvk-c221=\"\" data-test=\"calculate-audience-button\" bx-save-and-stay-button=\"\" class=\"btn\" _nghost-nvk-c117=\"\"><st-inline-loader _ngcontent-nvk-c117=\"\" class=\"d-flex justify-content-center ng-tns-c116-6 ng-star-inserted\" _nghost-nvk-c116=\"\"><div _ngcontent-nvk-c116=\"\" class=\"ng-tns-c116-6 ng-trigger ng-trigger-loaderAnimation\"><div _ngcontent-nvk-c116=\"\" class=\"d-inline ng-tns-c116-6 ng-star-inserted\" style=\"\"> Add Attribute<\/div><\/st-inline-loader><\/button>";
-                        var saveBtnHTML = "<button id=\"saveExtBtn\" disabled style= \"margin-top:12px\" _ngcontent-nvk-c221=\"\" data-test=\"calculate-audience-button\" bx-save-and-stay-button=\"\" class=\"btn\" _nghost-nvk-c117=\"\"><st-inline-loader _ngcontent-nvk-c117=\"\" class=\"d-flex justify-content-center ng-tns-c116-6 ng-star-inserted\" _nghost-nvk-c116=\"\"><div _ngcontent-nvk-c116=\"\" class=\"ng-tns-c116-6 ng-trigger ng-trigger-loaderAnimation\"><div _ngcontent-nvk-c116=\"\" class=\"d-inline ng-tns-c116-6 ng-star-inserted\" style=\"\"> Save Changes<\/div><\/st-inline-loader><\/button>";
-                        var jsonTableSelector = "body > ngb-modal-window > div > div > div > div.modal-body > div > div > st-json-as-table";
-                        $(saveBtnHTML).insertAfter(jsonTableSelector);
-                        $(addAttributeBtnHTML).insertAfter(jsonTableSelector);
-
-                        //add delete buttons
-                        var deleteBtnHTML = "<i style = \"float:right\" _ngcontent-nvk-c236=\"\" aria-hidden=\"true\" class=\"deleteExtAttrBtn far fa-trash ms-4 text-brand-danger\"><\/i>";
-                        $(".bx-json-as-table-data .ng-star-inserted").append(deleteBtnHTML);
-
-
-                        //click listners
-                        $("#addAttributeBtn").click(function (event) {
-                            event.preventDefault();
-                            // alert("addAttributeBtn");;
-                            var newRowHTML = "<div style=\"border-bottom: 1px solid var(--border-color-light); padding: 5px 20px;\" class=\"bx-json-as-table-key text-truncate ellipsis d-flex align-items-center justify-content-start level-0 ng-star-inserted\"><span _ngcontent-bvx-c176=\"\">key<\/span><\/div>\r\n<div style=\"border-bottom: 1px solid var(--border-color-light); padding: 5px 20px;\" class=\"bx-json-as-table-data ng-star-inserted\"><span _ngcontent-oxc-c176=\"\" class=\"text-break ng-star-inserted\">value<i  style=\"float:right\" _ngcontent-nvk-c236=\"\" aria-hidden=\"true\" class=\"deleteExtAttrBtn far fa-trash ms-4 text-brand-danger\"><\/i><\/span><\/div>";
-                            $(".bx-json-as-table").append(newRowHTML);
-                            enableSaveButton();
-                            makeTableFieldsEditable();
-                            addClickListnerToDeleteAttrBtn();
-                        });
-                        $("#saveExtBtn").click(async function (event) {
-                            event.preventDefault();
-                            alert("saveExtBtn");;
-                        });
-                        addClickListnerToDeleteAttrBtn();
-                        $(".bx-json-as-table-data .ng-star-inserted").click(function (event) {
-                            enableSaveButton();
-                        });
+                        makeTableFieldsEditable();
+                        insertAddAndSaveButtons();
+                        insertDeleteButtons();
+                        addExtClickListners();
                     }
                     isExtUIAugmented = true;
                 }, 1000);
 
             });
 
-            function addClickListnerToDeleteAttrBtn(){
+            function addClickListnerToDeleteAttrBtn() {
                 $(".deleteExtAttrBtn").click(function (event) {
                     event.preventDefault();
                     //alert("deleteExtAttrBtn");;
@@ -106,13 +75,100 @@
                 });
             }
 
-            function enableSaveButton(){
-                $('#saveExtBtn').prop("disabled", false); 
+            function camelize(str) {
+                return str.replace(/(?:^\w|[A-Z]|\b\w)/g, function (word, index) {
+                    return index === 0 ? word.toLowerCase() : word.toUpperCase();
+                }).replace(/\s+/g, '');
             }
 
-            function makeTableFieldsEditable(){
-                $(".bx-json-as-table-data .ng-star-inserted").attr("contentEditable",true);
-                $(".bx-json-as-table-key").attr("contentEditable",true);
+            function enableSaveButton() {
+                $('#saveExtBtn').prop("disabled", false);
+                $('#saveExtBtn').text("Save Changes");
+            }
+            function disableSaveButton() {
+                $('#saveExtBtn').prop("disabled", true);
+            }
+
+            function makeTableFieldsEditable() {
+                $(".bx-json-as-table-data .ng-star-inserted").attr("contentEditable", true);
+                $(".bx-json-as-table-key").attr("contentEditable", true);
+            }
+
+            function insertAddAndSaveButtons() {
+                var addAttributeBtnHTML = "<button id=\"addAttributeBtn\" style= \"margin-top:12px\" _ngcontent-nvk-c221=\"\" data-test=\"calculate-audience-button\" bx-save-and-stay-button=\"\" class=\"btn\" _nghost-nvk-c117=\"\"><st-inline-loader _ngcontent-nvk-c117=\"\" class=\"d-flex justify-content-center ng-tns-c116-6 ng-star-inserted\" _nghost-nvk-c116=\"\"><div _ngcontent-nvk-c116=\"\" class=\"ng-tns-c116-6 ng-trigger ng-trigger-loaderAnimation\"><div _ngcontent-nvk-c116=\"\" class=\"d-inline ng-tns-c116-6 ng-star-inserted\" style=\"\"> Add Attribute<\/div><\/st-inline-loader><\/button>";
+                var saveBtnHTML = "<button id=\"saveExtBtn\" disabled style= \"margin-top:12px\" _ngcontent-nvk-c221=\"\" data-test=\"calculate-audience-button\" bx-save-and-stay-button=\"\" class=\"btn\" _nghost-nvk-c117=\"\"><st-inline-loader _ngcontent-nvk-c117=\"\" class=\"d-flex justify-content-center ng-tns-c116-6 ng-star-inserted\" _nghost-nvk-c116=\"\"><div _ngcontent-nvk-c116=\"\" class=\"ng-tns-c116-6 ng-trigger ng-trigger-loaderAnimation\"><div _ngcontent-nvk-c116=\"\" class=\"d-inline ng-tns-c116-6 ng-star-inserted\" style=\"\"> Save Changes<\/div><\/st-inline-loader><\/button>";
+                var jsonTableSelector = "body > ngb-modal-window > div > div > div > div.modal-body > div > div > st-json-as-table";
+                $(saveBtnHTML).insertAfter(jsonTableSelector);
+                $(addAttributeBtnHTML).insertAfter(jsonTableSelector);
+            }
+
+            function insertDeleteButtons() {
+                //add delete buttons
+                var deleteBtnHTML = "<i style = \"float:right\" _ngcontent-nvk-c236=\"\" aria-hidden=\"true\" class=\"deleteExtAttrBtn far fa-trash ms-4 text-brand-danger\"><\/i>";
+                $(".bx-json-as-table-data .ng-star-inserted").append(deleteBtnHTML);
+            }
+
+            function addExtClickListners() {
+                $("#addAttributeBtn").click(function (event) {
+                    event.preventDefault();
+                    // alert("addAttributeBtn");;
+                    var newRowHTML = "<div style=\"border-bottom: 1px solid var(--border-color-light); padding: 5px 20px;\" class=\"bx-json-as-table-key text-truncate ellipsis d-flex align-items-center justify-content-start level-0 ng-star-inserted\"><span _ngcontent-bvx-c176=\"\">key<\/span><\/div>\r\n<div style=\"border-bottom: 1px solid var(--border-color-light); padding: 5px 20px;\" class=\"bx-json-as-table-data ng-star-inserted\"><span _ngcontent-oxc-c176=\"\" class=\"text-break ng-star-inserted\">value<i  style=\"float:right\" _ngcontent-nvk-c236=\"\" aria-hidden=\"true\" class=\"deleteExtAttrBtn far fa-trash ms-4 text-brand-danger\"><\/i><\/span><\/div>";
+                    $(".bx-json-as-table").append(newRowHTML);
+                    enableSaveButton();
+                    makeTableFieldsEditable();
+                    addClickListnerToDeleteAttrBtn();
+                });
+                $("#saveExtBtn").click(async function (event) {
+                    event.preventDefault();
+                    $('#saveExtBtn').text("Saving...");
+                    var keys = [];
+                    $(".bx-json-as-table-key").each(function (i, obj) {
+                        keys.push($(this).find("span").text())
+                    });
+                    var vals = [];
+                    $(".bx-json-as-table-data").each(function (i, obj) {
+                        vals.push($(this).find("span").text())
+                    });
+
+                    var dataObj = {};
+                    for (let i = 0; i < keys.length; i++) {
+                        dataObj[camelize(keys[i])] = vals[i];
+                    }
+                    console.log(dataObj)
+                    var guestRef = window.location.href.split("/")[5].split("?")[0];
+                    var currClientKey = localStorage.getItem('bxDataExtensionEditorClientKey');
+
+                    fetch('https://w1x491x7ik.execute-api.eu-west-1.amazonaws.com/default/createDataExtension', {
+                        method: 'post',
+                        headers: {
+                            'Accept': 'application/json, text/plain, */*',
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(
+                            {
+                                "guestRef": guestRef,
+                                "dataExtensionName": "ext",
+                                "dataExtensionKey": "default",
+                                "clientKey": currClientKey,
+                                "data": dataObj
+                            }
+                        )
+                    }).then(res => res.json())
+                        .then(res => {
+
+                            if (res.success == true) {
+                                $('#saveExtBtn').text("Changed Saved");
+                                disableSaveButton();
+                            } else {
+                                $('#saveExtBtn').text("Error Saving");
+                            }
+                        });
+                });
+
+                $(".bx-json-as-table-data .ng-star-inserted").click(function (event) {
+                    enableSaveButton();
+                });
+                addClickListnerToDeleteAttrBtn();
             }
 
         }
