@@ -61,8 +61,10 @@
         if (true) {
             var isExtUIAugmented = false;
 
-            //TODO: proper selector for ext default details btn
-            $("#profile-properties > div > div:nth-child(28) > button").click(function () {
+            //this selector finds the "details" button next to the "Ext:" extension...
+            $('.ng-star-inserted:contains("Ext:")').filter(function () {
+                return $(this).text() == 'Ext:';
+            }).next().find("button").click(function () {
                 setTimeout(function () {
                     if (isExtUIAugmented === false) {
                         makeTableFieldsEditable();
