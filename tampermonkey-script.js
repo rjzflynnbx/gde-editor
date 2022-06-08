@@ -40,7 +40,7 @@
         if (window.location.href.includes("section=properties")) {
             setTimeout(function () {
                 augmentUIwithAddAndRmvButtons();
-                addClickListnerForExtDefaultExtension();
+                augmentUIForExtDefaultExtension();
             }, 1000);
         }
     }
@@ -57,7 +57,7 @@
         localStorage.setItem('bxDataExtensionEditorClientKey', clientKey);
     }
 
-    function addClickListnerForExtDefaultExtension() {
+    function augmentUIForExtDefaultExtension() {
         if (true) {
             var isExtUIAugmented = false;
 
