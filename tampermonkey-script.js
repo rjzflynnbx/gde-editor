@@ -25,7 +25,7 @@
         pqsHoMeZqwc3fXgLCQs1p21ImhAr6tPL: "SpinHome",
         dpsbx91fh7b0ve3qbfuoa0f7brme513i: "PLAY! Summit"
     }
-
+    const CREATE_DATAEXT_LAMBDA_URL = "https://w1x491x7ik.execute-api.eu-west-1.amazonaws.com/default/createDataExtension"
 
     let lastUrl = location.href;
     new MutationObserver(() => {
@@ -145,7 +145,7 @@
                     var guestRef = getGuestRef();
                     var currClientKey = getCurrentClientKey();
 
-                    fetch('https://w1x491x7ik.execute-api.eu-west-1.amazonaws.com/default/createDataExtension', {
+                    fetch(CREATE_DATAEXT_LAMBDA_URL, {
                         method: 'post',
                         headers: {
                             'Accept': 'application/json, text/plain, */*',
@@ -291,7 +291,7 @@
 
                         var currClientKey = getCurrentClientKey();
 
-                        fetch('https://w1x491x7ik.execute-api.eu-west-1.amazonaws.com/default/createDataExtension', {
+                        fetch(CREATE_DATAEXT_LAMBDA_URL, {
                             method: 'post',
                             headers: {
                                 'Accept': 'application/json, text/plain, */*',
@@ -353,7 +353,7 @@
                         var guestRef = getGuestRef();
                         var currClientKey = localStorage.getItem('bxDataExtensionEditorClientKey');
 
-                        fetch('https://w1x491x7ik.execute-api.eu-west-1.amazonaws.com/default/createDataExtension', {
+                        fetch(CREATE_DATAEXT_LAMBDA_URL, {
                             method: 'delete',
                             headers: {
                                 'Accept': 'application/json, text/plain, */*',
