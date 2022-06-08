@@ -122,7 +122,7 @@
             function addExtClickListners() {
                 $("#addAttributeBtn").click(function (event) {
                     event.preventDefault();
-                    var newRowHTML = "<div style=\"border-bottom: 1px solid var(--border-color-light); padding: 5px 20px;\" class=\"bx-json-as-table-key text-truncate ellipsis d-flex align-items-center justify-content-start level-0 ng-star-inserted\"><span _ngcontent-bvx-c176=\"\">key<\/span><\/div>\r\n<div style=\"border-bottom: 1px solid var(--border-color-light); padding: 5px 20px;\" class=\"bx-json-as-table-data ng-star-inserted\"><span _ngcontent-oxc-c176=\"\" class=\"text-break ng-star-inserted\">value<i  style=\"float:right\" _ngcontent-nvk-c236=\"\" aria-hidden=\"true\" class=\"deleteExtAttrBtn far fa-trash ms-4 text-brand-danger\"><\/i><\/span><\/div>";
+                    var newRowHTML = "<div style=\"border-bottom: 1px solid var(--border-color-light); padding: 5px 20px;\" class=\"bx-json-as-table-key text-truncate ellipsis d-flex align-items-center justify-content-start level-0 ng-star-inserted\"><span _ngcontent-bvx-c176=\"\">_key<\/span><\/div>\r\n<div style=\"border-bottom: 1px solid var(--border-color-light); padding: 5px 20px;\" class=\"bx-json-as-table-data ng-star-inserted\"><span _ngcontent-oxc-c176=\"\" class=\"text-break ng-star-inserted\">value<i  style=\"float:right\" _ngcontent-nvk-c236=\"\" aria-hidden=\"true\" class=\"deleteExtAttrBtn far fa-trash ms-4 text-brand-danger\"><\/i><\/span><\/div>";
                     $(".bx-json-as-table").append(newRowHTML);
                     enableSaveButton();
                     makeTableFieldsEditable();
