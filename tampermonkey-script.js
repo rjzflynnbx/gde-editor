@@ -45,15 +45,15 @@
         }
     }
 
-    function getGuestRef(){
+    function getGuestRef() {
         return window.location.href.split("/")[5].split("?")[0];
     }
 
-    function getCurrentClientKey(){
+    function getCurrentClientKey() {
         return localStorage.getItem('bxDataExtensionEditorClientKey');;
     }
 
-    function setCurrentClientKey(clientKey){
+    function setCurrentClientKey(clientKey) {
         localStorage.setItem('bxDataExtensionEditorClientKey', clientKey);
     }
 
@@ -64,18 +64,19 @@
             //this selector finds the "details" button next to the "Ext:" extension...
             $('.ng-star-inserted:contains("Ext:")').filter(function () {
                 return $(this).text() == 'Ext:';
-            }).next().find("button").click(function () {
-                setTimeout(function () {
-                    if (isExtUIAugmented === false) {
-                        makeTableFieldsEditable();
-                        insertAddAndSaveButtons();
-                        insertDeleteButtons();
-                        addExtClickListners();
-                    }
-                    isExtUIAugmented = true;
-                }, 1000);
+            }).next().find("button")
+                .click(function () {
+                    setTimeout(function () {
+                        if (isExtUIAugmented === false) {
+                            makeTableFieldsEditable();
+                            insertAddAndSaveButtons();
+                            insertDeleteButtons();
+                            addExtClickListners();
+                        }
+                        isExtUIAugmented = true;
+                    }, 1000);
 
-            });
+                });
 
             function addClickListnerToDeleteAttrBtn() {
                 $(".deleteExtAttrBtn").click(function (event) {
