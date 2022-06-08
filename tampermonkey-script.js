@@ -50,7 +50,7 @@
     }
 
     function getCurrentClientKey(){
-        localStorage.getItem('bxDataExtensionEditorClientKey');;
+        return localStorage.getItem('bxDataExtensionEditorClientKey');;
     }
 
     function setCurrentClientKey(clientKey){
