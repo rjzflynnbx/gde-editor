@@ -45,6 +45,17 @@
         }
     }
 
+    function getGuestRef(){
+        return window.location.href.split("/")[5].split("?")[0];
+    }
+
+    function getCurrentClientKey(){
+        localStorage.getItem('bxDataExtensionEditorClientKey');;
+    }
+
+    function setCurrentClientKey(clientKey){
+        localStorage.setItem('bxDataExtensionEditorClientKey', clientKey);
+    }
 
     function addClickListnerForExtDefaultExtension() {
         if (true) {
@@ -67,8 +78,6 @@
             function addClickListnerToDeleteAttrBtn() {
                 $(".deleteExtAttrBtn").click(function (event) {
                     event.preventDefault();
-                    //alert("deleteExtAttrBtn");;
-                    console.log($(this).parent().parent().prev());
                     $(this).parent().parent().prev().remove();
                     $(this).closest('div').remove();
                     enableSaveButton();
@@ -103,7 +112,6 @@
             }
 
             function insertDeleteButtons() {
-                //add delete buttons
                 var deleteBtnHTML = "<i style = \"float:right\" _ngcontent-nvk-c236=\"\" aria-hidden=\"true\" class=\"deleteExtAttrBtn far fa-trash ms-4 text-brand-danger\"><\/i>";
                 $(".bx-json-as-table-data .ng-star-inserted").append(deleteBtnHTML);
             }
@@ -111,7 +119,6 @@
             function addExtClickListners() {
                 $("#addAttributeBtn").click(function (event) {
                     event.preventDefault();
-                    // alert("addAttributeBtn");;
                     var newRowHTML = "<div style=\"border-bottom: 1px solid var(--border-color-light); padding: 5px 20px;\" class=\"bx-json-as-table-key text-truncate ellipsis d-flex align-items-center justify-content-start level-0 ng-star-inserted\"><span _ngcontent-bvx-c176=\"\">key<\/span><\/div>\r\n<div style=\"border-bottom: 1px solid var(--border-color-light); padding: 5px 20px;\" class=\"bx-json-as-table-data ng-star-inserted\"><span _ngcontent-oxc-c176=\"\" class=\"text-break ng-star-inserted\">value<i  style=\"float:right\" _ngcontent-nvk-c236=\"\" aria-hidden=\"true\" class=\"deleteExtAttrBtn far fa-trash ms-4 text-brand-danger\"><\/i><\/span><\/div>";
                     $(".bx-json-as-table").append(newRowHTML);
                     enableSaveButton();
@@ -135,8 +142,8 @@
                         dataObj[camelize(keys[i])] = vals[i];
                     }
                     console.log(dataObj)
-                    var guestRef = window.location.href.split("/")[5].split("?")[0];
-                    var currClientKey = localStorage.getItem('bxDataExtensionEditorClientKey');
+                    var guestRef = getGuestRef();
+                    var currClientKey = getCurrentClientKey();
 
                     fetch('https://w1x491x7ik.execute-api.eu-west-1.amazonaws.com/default/createDataExtension', {
                         method: 'post',
@@ -180,7 +187,7 @@
 
         //try and set the correct client key
         var clientKeyNameFromUI = document.querySelector("#user-account-dropdown-toggle > span").innerHTML;
-        var currClientKey = localStorage.getItem('bxDataExtensionEditorClientKey');
+        var currClientKey = getCurrentClientKey();
 
         if (reverseClientKeyMap[clientKeyNameFromUI] == undefined) {
             console.log("GDE Editor CLient Key Not Supported")
@@ -257,7 +264,7 @@
                         const kv7 = Swal.getPopup().querySelector('#_kv7').value.trim();
                         const kv7_values = kv7.split(",");
 
-                        var guestRef = window.location.href.split("/")[5].split("?")[0];
+                        var guestRef = getGuestRef();
 
                         var dataObj = {};
                         if (kv1 != null && kv1 != undefined && kv1 != "undefined") {
@@ -282,7 +289,7 @@
                             dataObj[kv7_values[0]] = kv7_values[1];
                         }
 
-                        var currClientKey = localStorage.getItem('bxDataExtensionEditorClientKey');
+                        var currClientKey = getCurrentClientKey();
 
                         fetch('https://w1x491x7ik.execute-api.eu-west-1.amazonaws.com/default/createDataExtension', {
                             method: 'post',
@@ -343,7 +350,7 @@
                     if (result.isConfirmed) {
                         var dataExtName = Swal.getPopup().querySelector('#dataExtName').value;
                         var dataExtRef = Swal.getPopup().querySelector('#dataExtRef').value;
-                        var guestRef = window.location.href.split("/")[5].split("?")[0];
+                        var guestRef = getGuestRef();
                         var currClientKey = localStorage.getItem('bxDataExtensionEditorClientKey');
 
                         fetch('https://w1x491x7ik.execute-api.eu-west-1.amazonaws.com/default/createDataExtension', {
@@ -400,7 +407,7 @@
 
                 if (clientKey) {
                     Swal.fire(`You selected: ${clientKey}`);
-                    localStorage.setItem('bxDataExtensionEditorClientKey', clientKey);
+                    setCurrentClientKey(clientKey);
                     $("#_currentClientKey").html(" = " + clientKeyMap[clientKey] + "");
                 }
 
