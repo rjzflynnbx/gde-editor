@@ -25,7 +25,8 @@
         pqsHoMeZqwc3fXgLCQs1p21ImhAr6tPL: "SpinHome",
         dpsbx91fh7b0ve3qbfuoa0f7brme513i: "PLAY! Summit"
     }
-    const CREATE_DATAEXT_LAMBDA_URL = "https://w1x491x7ik.execute-api.eu-west-1.amazonaws.com/default/createDataExtension"
+    const CREATE_DATAEXT_LAMBDA_URL = "https://w1x491x7ik.execute-api.eu-west-1.amazonaws.com/default/createDataExtension";
+    const CLIENTKEY_LOCALSTORAGE_KEY = "bxDataExtensionEditorClientKey";
 
     let lastUrl = location.href;
     new MutationObserver(() => {
@@ -50,11 +51,11 @@
     }
 
     function getCurrentClientKey() {
-        return localStorage.getItem('bxDataExtensionEditorClientKey');;
+        return localStorage.getItem(CLIENTKEY_LOCALSTORAGE_KEY);
     }
 
     function setCurrentClientKey(clientKey) {
-        localStorage.setItem('bxDataExtensionEditorClientKey', clientKey);
+        localStorage.setItem(CLIENTKEY_LOCALSTORAGE_KEY, clientKey);
     }
 
     function augmentUIForExtDefaultExtension() {
