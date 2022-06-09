@@ -13,7 +13,7 @@ https://doc.sitecore.com/cdp/en/developers/sitecore-customer-data-platform--data
 Watch: https://sitecore.box.com/s/6s3xg2ory7secjmpibcqarqbcqzcens3
 
 
-# What is this?
+# Or read:
 
   
 
