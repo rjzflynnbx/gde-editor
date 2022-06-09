@@ -5,7 +5,13 @@ Front end UI for editing Guest Data Extensions(GDE's)
 
 https://doc.sitecore.com/cdp/en/developers/sitecore-customer-data-platform--data-model-2-1/sitecore-cdp-guest-data-extension-model-functions-rest-api.html
 
+ 
+ 
+# Video tutorial
+
   
+Watch: https://sitecore.box.com/s/6s3xg2ory7secjmpibcqarqbcqzcens3
+
 
 # What is this?
 
@@ -50,17 +56,7 @@ That's it you're ready to go.
 
   
 
-# How do I use it?
 
-  
-
-It's very simple. Watch this 2 minute video:
-
-  
-
-https://sitecore.box.com/s/47ya16q97wxoulmmz5ckzu16cnq51rrc
-
-  
   
 
 # What clientKeys are supported?
