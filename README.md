@@ -20,11 +20,13 @@ It adds these three buttons to the properties screen of a Guest profile:
 ![enter image description here](https://i.ibb.co/WzzjxQ1/Screenshot-2022-04-25-at-14-24-12.png)
 
 
-Additionally IF the extension name is "ext" and the key is "default" as per 2.1 DataExtensions API docs...
+Additionally if the extension name is "ext" and the key is "default" as per 2.1 DataExtensions API docs...
 
-Then that extension can be edited 'in place' via the UI augmentatins highlighted below
+Then that extension can be edited 'in place' via the UI augmentations highlighted below
 
 ![enter image description here](https://i.ibb.co/1mNwxcW/Screenshot-2022-06-09-at-12-10-44.png)
+
+Just edit the table as required and "Save Changes"
 
   
 
@@ -73,7 +75,7 @@ https://sitecore.box.com/s/47ya16q97wxoulmmz5ckzu16cnq51rrc
 
 (email richard.flynn@sitecore.net to add more)
 
-Send me -> the client key (and API secret to add)
+Send me -> the client key (and API secret)  to add
 
 And also the EXACT string displayed in the UI for that client key, from here:
 
