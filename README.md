@@ -19,6 +19,13 @@ It adds these three buttons to the properties screen of a Guest profile:
 
 ![enter image description here](https://i.ibb.co/WzzjxQ1/Screenshot-2022-04-25-at-14-24-12.png)
 
+
+Additionally IF the extension name is "ext" and the key is "default" as per 2.1 DataExtensions API docs...
+
+Then that extension can be edited 'in place' via the UI augmentatins highlighted below
+
+![enter image description here](https://i.ibb.co/WzzjxQ1/Screenshot-2022-04-25-at-14-24-12.png)
+
   
 
 # How do I install it?
