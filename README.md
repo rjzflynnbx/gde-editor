@@ -77,6 +77,6 @@ Send me -> the client key (and API secret to add)
 
 And also the EXACT string displayed in the UI for that client key, from here:
 
-![enter image description here](https://i.ibb.co/yYGjfK7/Screenshot-2022-06-09-at-)
+![enter image description here](https://i.ibb.co/yYGjfK7/Screenshot-2022-06-09-at-12-15-05.png)
 
 e.g. "Partner Sandbox"
