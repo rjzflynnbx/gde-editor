@@ -5,6 +5,7 @@
 // @description  try to take over the world!
 // @author       You
 // @match        https://app.boxever.com/*
+// @match        https://app-ap.boxever.com/*
 // @icon         https://www.google.com/s2/favicons?domain=boxever.com
 // @grant        none
 // @require      https://cdn.jsdelivr.net/npm/sweetalert2@11
@@ -196,6 +197,8 @@
         var currClientKey = getCurrentClientKey();
 
         if (reverseClientKeyMap[clientKeyNameFromUI] == undefined) {
+            console.log(clientKeyNameFromUI);
+            console.log(reverseClientKeyMap)
             console.log("GDE Editor CLient Key Not Supported")
         } else {
             //try and set client key
