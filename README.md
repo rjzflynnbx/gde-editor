@@ -61,13 +61,17 @@ That's it you're ready to go.
 
 # What clientKeys are supported?
 
- - BoxeverLabs (SpinAir) 
- - PartnerSandbox 
- - SpinGaming 
- - SpinAir - DC
- - SpinFinance 
- - SpinMedia (SpinCom) 
- - SpinShop
+    wjtc2eog1lvueo72kts3mn1ean0nentz: 'Boxever Labs (Spinair)',
+        psfu6uh05hsr9c34rptlr06dn864cqrx: 'Partner Sandbox',
+        pqsGAMEJ9jsRlJMQPTrnpk0cGxD4ab70: "Spin Gaming",
+        pqsDATA3lw12v5a9rrHPW1c4hET73GxQ: "Spinair - DC",
+        pqsFinGP4nW3iqC4JzgRMGZMgODLuDVM: "SpinFinance",
+        pqsMedIa6PvIs50quSIOAPHcL0TJTQpk: "SpinMedia",
+        pqsSIOPAxhMC9zJLJSZNFURPNqALIFwd: "SpinShop",
+        pqsHoMeZqwc3fXgLCQs1p21ImhAr6tPL: "SpinHome",
+        dpsbx91fh7b0ve3qbfuoa0f7brme513i: "PLAY! Summit",
+        sise3apsjuzewfkne2rmuuedwflq2ruc: "Sitecore Sales Engineering 3 AP",
+        sise1aprs042qjutf9b9p94lx31bk8n8: "Sitecore Sales Engineering 1 AP"
 
 (email richard.flynn@sitecore.net to add more)
 
