@@ -73,9 +73,13 @@ That's it you're ready to go.
         sise3apsjuzewfkne2rmuuedwflq2ruc: "Sitecore Sales Engineering 3 AP",
         sise1aprs042qjutf9b9p94lx31bk8n8: "Sitecore Sales Engineering 1 AP"
 
-(email richard.flynn@sitecore.net to add more)
+Eemail richard.flynn@sitecore.net to add more clients.
 
-Send me -> the client key (and API secret)  to add
+Send me:
+
+ - the client key
+ - API secret 
+ - tenant region (1 of US,EU,AUS)
 
 And also the EXACT string displayed in the UI for that client key, from here:
 
