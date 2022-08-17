@@ -5,7 +5,7 @@ Front end UI for adding Guests:
 ![enter image description here](https://i.ibb.co/8gDKz2k/Screenshot-2022-08-17-at-14-25-25.png)
 
 
-And front end UI for editing Guest Data Extensions(GDE's)
+And front end UI for adding and editing Guest Data Extensions(GDE's)
 
 https://doc.sitecore.com/cdp/en/developers/sitecore-customer-data-platform--data-model-2-1/sitecore-cdp-guest-data-extension-model-functions-rest-api.html
 
