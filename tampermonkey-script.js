@@ -28,8 +28,32 @@
         sise3apsjuzewfkne2rmuuedwflq2ruc: "Sitecore Sales Engineering 3 AP",
         sise1aprs042qjutf9b9p94lx31bk8n8: "Sitecore Sales Engineering 1 AP"
     }
+
+    const reverseObject = (obj) => {
+        const newObj = {};
+        Object.keys(obj).forEach(key => {
+            if (newObj[obj[key]]) {
+                newObj[obj[key]].push(key);
+            } else {
+                newObj[obj[key]] = [key];
+            }
+        });
+        return newObj;
+    };
+    const reverseClientKeyMap = reverseObject(clientKeyMap);
+
+
+
     const CREATE_DATAEXT_LAMBDA_URL = "https://w1x491x7ik.execute-api.eu-west-1.amazonaws.com/default/createDataExtension";
     const CLIENTKEY_LOCALSTORAGE_KEY = "bxDataExtensionEditorClientKey";
+
+    if (window.location.href.includes("guests/list")) {
+        console.log('guests/list');
+        setTimeout(function () {
+            augmentGuestListUI();
+            addClickListnerToAddGuestBtn();
+        }, 3500);
+    }
 
     let lastUrl = location.href;
     new MutationObserver(() => {
@@ -46,6 +70,12 @@
                 augmentUIwithAddAndRmvButtons();
                 augmentUIForExtDefaultExtension();
             }, 1000);
+        }
+        if (window.location.href.includes("guests/list")) {
+            setTimeout(function () {
+                augmentGuestListUI();
+                addClickListnerToAddGuestBtn();
+            }, 3500);
         }
     }
 
@@ -190,7 +220,6 @@
 
     function augmentUIwithAddAndRmvButtons() {
         console.log("augmentUIwithAddAndRmvButtons");
-        var reverseClientKeyMap = reverseObject(clientKeyMap);
 
         //try and set the correct client key
         var clientKeyNameFromUI = document.querySelector("#user-account-dropdown-toggle > span").innerHTML;
@@ -201,28 +230,13 @@
             console.log(reverseClientKeyMap)
             console.log("GDE Editor CLient Key Not Supported")
         } else {
-            //try and set client key
+          
             if (reverseClientKeyMap[clientKeyNameFromUI] != currClientKey) {
-                Swal.fire({
-                    title: 'Change GDE Editor Client Key to ' + clientKeyNameFromUI,
-                    text: "",
-                    icon: 'question',
-                    confirmButtonText: 'Yes, change it!'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        var newClientKey = reverseClientKeyMap[clientKeyNameFromUI][0];
-                        localStorage.setItem('bxDataExtensionEditorClientKey', newClientKey);
-                        $("#_currentClientKey").html(" = " + clientKeyMap[newClientKey] + "");
-                        Swal.fire(
-                            'Done!',
-                            'GDE Editor Client Key Updated',
-                            'success'
-                        )
-                    }
-                })
+                setClientKeyFromUI();
+                $("#_currentClientKey").html(" = " + clientKeyMap[newClientKey] + "");
             }
 
-            $("<li class=\"list-group-item\"><a id=\"addDataExtBtn\"  href=\"\"> <i aria-hidden=\"true\" class=\"fas fa-user-plus\"></i> Add GDE <i aria-hidden=\"true\" class=\"fas fa-info-circle icon-size-18 pull-right\"><\/i><\/a><\/li> <li class=\"list-group-item\"><a id=\"removeDataExtBtn\"  href=\"\"> <i aria-hidden=\"true\" class=\"fas fa-user-minus\"></i> Remove GDE <i aria-hidden=\"true\" class=\"fas fa-info-circle icon-size-18 pull-right\"><\/i><\/a><\/li><li class=\"list-group-item\"><a id=\"setClientKey\"  href=\"\"> <i aria-hidden=\"true\" class=\"fas fa-cog\"></i> Client Key <span id=\"_currentClientKey\"> = " + clientKeyMap[currClientKey] + "</span> <i aria-hidden=\"true\" class=\"fas fa-info-circle icon-size-18 pull-right\"><\/i><\/a><\/li>")
+            $("<li class=\"list-group-item\"><a id=\"addDataExtBtn\"  href=\"\"> <i aria-hidden=\"true\" class=\"fas fa-user-plus\"></i> Add GDE <i aria-hidden=\"true\" class=\"fas fa-info-circle icon-size-18 pull-right\"><\/i><\/a><\/li> <li class=\"list-group-item\"><a id=\"removeDataExtBtn\"  href=\"\"> <i aria-hidden=\"true\" class=\"fas fa-user-minus\"></i> Remove GDE <i aria-hidden=\"true\" class=\"fas fa-info-circle icon-size-18 pull-right\"><\/i><\/a><\/li><li class=\"list-group-item\"><a id=\"setClientKey\"  href=\"\"> <i aria-hidden=\"true\" class=\"fas fa-cog\"></i> Client Key <span id=\"_currentClientKey\"> = " + clientKeyMap[currClientKey] + "</span> <i aria-hidden=\"true\" class=\"fas fa-info-circle icon-size-18 pull-right\"><\/i><\/a><\/li><li class=\"list-group-item\"><a id=\"deleteGuestBtn\"  href=\"\"> <i aria-hidden=\"true\" class=\"fas fa-user-minus\"></i> Delete Guest  <i aria-hidden=\"true\" class=\"fas fa-info-circle icon-size-18 pull-right\"><\/i><\/a><\/li>")
                 .insertAfter($("#profile-properties"));
 
             $("#addDataExtBtn").click(async function (event) {
@@ -308,6 +322,7 @@
                             },
                             body: JSON.stringify(
                                 {
+                                    "mode": "CREATE_GDE",
                                     "guestRef": guestRef,
                                     "dataExtensionName": dataExtName,
                                     "dataExtensionKey": dataExtKey,
@@ -326,7 +341,7 @@
                                     )
                                 } else {
                                     Swal.fire(
-                                        'Error Creating Data Extension ask Richard Flynn why...',
+                                        'Error Creating Data Extension (first use the latest code from github) then if not working  Richard Flynn why ...',
                                         '',
                                         'error'
                                     )
@@ -363,13 +378,14 @@
                         var currClientKey = localStorage.getItem('bxDataExtensionEditorClientKey');
 
                         fetch(CREATE_DATAEXT_LAMBDA_URL, {
-                            method: 'delete',
+                            method: 'post',
                             headers: {
                                 'Accept': 'application/json, text/plain, */*',
                                 'Content-Type': 'application/json'
                             },
                             body: JSON.stringify(
                                 {
+                                    "mode": "DELETE_GDE",
                                     "guestRef": guestRef,
                                     "dataExtensionName": dataExtName,
                                     "dataExtensionRef": dataExtRef,
@@ -387,7 +403,7 @@
                                     )
                                 } else {
                                     Swal.fire(
-                                        'Error Removing Data Extension ask Richard Flynn why...',
+                                        'Error Deleting Data Extension (first use the latest code from github) then if not working  Richard Flynn why ...',
                                         '',
                                         'error'
                                     )
@@ -424,17 +440,94 @@
         }
     }
 
+    function augmentGuestListUI() {
+        const addGuestBtnHTML = "<div id=\"addGuestBtn\" _ngcontent-soq-c290=\"\" data-test=\"total-Visitor\" class=\"ng-star-inserted\"><button _ngcontent-soq-c311=\"\" data-test=\"create-segment-button\" class=\"btn btn-secondary\" style=\"\/* float: left; *\/margin-top: 12px;\">Add<\/button><!----><\/div>";
+        const afterVisitorCount = document.querySelector("#boxever-content-loaded > div > div > div.guest-list--counts > div:nth-child(5)");
+        $(addGuestBtnHTML).insertAfter(afterVisitorCount);
+        setClientKeyFromUI();
+    }
 
-    const reverseObject = (obj) => {
-        const newObj = {};
-        Object.keys(obj).forEach(key => {
-            if (newObj[obj[key]]) {
-                newObj[obj[key]].push(key);
-            } else {
-                newObj[obj[key]] = [key];
-            }
+    function addClickListnerToAddGuestBtn() {
+        $("#addGuestBtn").click(function (event) {
+            event.preventDefault();
+            Swal.fire({
+                title: 'Add Guest',
+                html: `<input type="text" id="addGuestFirstName" class="swal2-input" placeholder="first name">
+                        <input type="text" id="addGuestLastName" class="swal2-input" placeholder="last name">
+                        <input type="text" id="addGuestEmail" class="swal2-input" placeholder="email">
+                        <input type="text" id="pos" class="swal2-input" placeholder="point of sale">
+                        </br>
+                        <a target="_blank" href="https://app.boxever.com/#/management/points-of-sale" >points-of-sale</a>
+                        `,
+                confirmButtonText: 'Add Guest',
+                focusConfirm: false,
+                showCancelButton: true,
+                showLoaderOnConfirm: true,
+                preConfirm: () => {
+                    Swal.showLoading()
+                }
+            }).then((result) => {
+
+                if (result.isConfirmed) {
+
+                    var fname = Swal.getPopup().querySelector('#addGuestFirstName').value;
+                    var lname = Swal.getPopup().querySelector('#addGuestLastName').value;
+                    var email = Swal.getPopup().querySelector('#addGuestEmail').value;
+                    var pos = Swal.getPopup().querySelector('#pos').value;
+                    var currClientKey = getCurrentClientKey();
+
+                    fetch(CREATE_DATAEXT_LAMBDA_URL, {
+                        method: 'post',
+                        headers: {
+                            'Accept': 'application/json, text/plain, */*',
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(
+                            {
+                                "mode": "IDENTIFY",
+                                "clientKey": currClientKey,
+                                "pos": pos,
+                                "email": email,
+                                "fname": fname,
+                                "lname": lname
+                            }
+                        )
+                    })
+                        .then(res => {
+                            console.log(res);
+                            Swal.fire(
+                                'Guest Created',
+                                'refresh page to see...',
+                                'success'
+                            )
+                        });
+
+                }
+
+            })
         });
-        return newObj;
-    };
+    }
+
+
+    function setClientKeyFromUI() {
+        var clientKeyNameFromUI = document.querySelector("#user-account-dropdown-toggle > span").innerHTML;
+        var currClientKey = getCurrentClientKey();
+        if (reverseClientKeyMap[clientKeyNameFromUI] == undefined) {
+            console.log(clientKeyNameFromUI);
+            console.log(reverseClientKeyMap)
+            console.log("GDE Editor CLient Key Not Supported")
+        } else {
+            //try and set client key
+            if (reverseClientKeyMap[clientKeyNameFromUI] != currClientKey) {
+                var newClientKey = reverseClientKeyMap[clientKeyNameFromUI][0];
+                localStorage.setItem('bxDataExtensionEditorClientKey', newClientKey);
+                //$("#_currentClientKey").html(" = " + clientKeyMap[newClientKey] + "");
+                console.log("clientKey updated to " + newClientKey)
+            }
+        }
+    }
+
+
+
 
 })();
