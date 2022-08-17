@@ -437,6 +437,11 @@
                 }
 
             });
+
+            $("#deleteGuestBtn").click(async function (event) {
+                event.preventDefault();
+                Swal.fire("Coming soon");       
+            });
         }
     }
 
