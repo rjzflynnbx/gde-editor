@@ -15,7 +15,7 @@ exports.handler = async function (event, context, callback) {
 
     let MODE = jsonIn.mode;
     console.log("MODE", MODE)
-    if (!MODE) {
+    if(!MODE){
         MODE = "CREATE_GDE"; //backwards compatibility with old versions of TM script which do not send a mode to create a GDE
     }
     console.log("MODE", MODE)
@@ -98,9 +98,8 @@ exports.handler = async function (event, context, callback) {
         return response;
 
 
-    }
-    else if (MODE && MODE === "DELETE_GDE") {
-
+    } else if (MODE && MODE === "DELETE_GDE") {
+        
         console.log('START deleteDataExtension...');
 
         var jsonIn = JSON.parse(event.body);
@@ -215,6 +214,10 @@ const getBaseURL = function (clientKey) {
     if (clientKey === "sise3apsjuzewfkne2rmuuedwflq2ruc" ||
         clientKey === "sise1aprs042qjutf9b9p94lx31bk8n8") {
         baseUrl = "https://api-ap-southeast-2-production.boxever.com"
+    }
+    //us client key
+    if(clientKey === "sise2usl84d0ouwq5w7zd4wvq1wn5xkd"){
+        baseUrl = "https://api-us.boxever.com"
     }
     return baseUrl;
 }

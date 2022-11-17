@@ -6,6 +6,7 @@
 // @author       You
 // @match        https://app.boxever.com/*
 // @match        https://app-ap.boxever.com/*
+// @match        https://app-us.boxever.com/*
 // @icon         https://www.google.com/s2/favicons?domain=boxever.com
 // @grant        none
 // @require      https://cdn.jsdelivr.net/npm/sweetalert2@11
@@ -26,7 +27,8 @@
         pqsHoMeZqwc3fXgLCQs1p21ImhAr6tPL: "SpinHome",
         dpsbx91fh7b0ve3qbfuoa0f7brme513i: "PLAY! Summit",
         sise3apsjuzewfkne2rmuuedwflq2ruc: "Sitecore Sales Engineering 3 AP",
-        sise1aprs042qjutf9b9p94lx31bk8n8: "Sitecore Sales Engineering 1 AP"
+        sise1aprs042qjutf9b9p94lx31bk8n8: "Sitecore Sales Engineering 1 AP",
+        sise2usl84d0ouwq5w7zd4wvq1wn5xkd: "Sitecore Sales Engineering 2 US"
     }
 
     const reverseObject = (obj) => {
