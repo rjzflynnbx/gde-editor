@@ -241,7 +241,7 @@
 
             $("#addDataExtBtn").click(async function (event) {
                 event.preventDefault();
-                Swal.fire({
+                Sweetalert2.fire({
                     title: 'Add Data Extension',
                     html: `<input type="text" id="dataExtName" class="swal2-input" placeholder="Data Extension Name">
                             <input type="text" id="dataExtKey" class="swal2-input" placeholder="Data Extension Key">
@@ -258,33 +258,33 @@
                     showCancelButton: true,
                     showLoaderOnConfirm: true,
                     preConfirm: () => {
-                        Swal.showLoading()
+                        Sweetalert2.showLoading()
                     }
                 }).then((result) => {
 
                     if (result.isConfirmed) {
-                        var dataExtName = Swal.getPopup().querySelector('#dataExtName').value;
-                        var dataExtKey = Swal.getPopup().querySelector('#dataExtKey').value;
+                        var dataExtName = Sweetalert2.getPopup().querySelector('#dataExtName').value;
+                        var dataExtKey = Sweetalert2.getPopup().querySelector('#dataExtKey').value;
 
-                        const kv1 = Swal.getPopup().querySelector('#_kv1').value.trim();
+                        const kv1 = Sweetalert2.getPopup().querySelector('#_kv1').value.trim();
                         const kv1_values = kv1.split(",");
 
-                        const kv2 = Swal.getPopup().querySelector('#_kv2').value.trim();
+                        const kv2 = Sweetalert2.getPopup().querySelector('#_kv2').value.trim();
                         const kv2_values = kv2.split(",");
 
-                        const kv3 = Swal.getPopup().querySelector('#_kv3').value.trim();
+                        const kv3 = Sweetalert2.getPopup().querySelector('#_kv3').value.trim();
                         const kv3_values = kv3.split(",");
 
-                        const kv4 = Swal.getPopup().querySelector('#_kv4').value.trim();
+                        const kv4 = Sweetalert2.getPopup().querySelector('#_kv4').value.trim();
                         const kv4_values = kv4.split(",");
 
-                        const kv5 = Swal.getPopup().querySelector('#_kv5').value.trim();
+                        const kv5 = Sweetalert2.getPopup().querySelector('#_kv5').value.trim();
                         const kv5_values = kv5.split(",");
 
-                        const kv6 = Swal.getPopup().querySelector('#_kv6').value.trim();
+                        const kv6 = Sweetalert2.getPopup().querySelector('#_kv6').value.trim();
                         const kv6_values = kv6.split(",");
 
-                        const kv7 = Swal.getPopup().querySelector('#_kv7').value.trim();
+                        const kv7 = Sweetalert2.getPopup().querySelector('#_kv7').value.trim();
                         const kv7_values = kv7.split(",");
 
                         var guestRef = getGuestRef();
@@ -334,13 +334,13 @@
                             .then(res => {
                                 console.log("welllll " + res.success);
                                 if (res.success == true) {
-                                    Swal.fire(
+                                    Sweetalert2.fire(
                                         'Data Extension Created',
                                         'refresh the page to see...',
                                         'success'
                                     )
                                 } else {
-                                    Swal.fire(
+                                    Sweetalert2.fire(
                                         'Error Creating Data Extension (first use the latest code from github) then if not working  Richard Flynn why ...',
                                         '',
                                         'error'
@@ -357,7 +357,7 @@
 
             $("#removeDataExtBtn").click(async function (event) {
                 event.preventDefault();
-                Swal.fire({
+                Sweetalert2.fire({
                     title: 'Remove Data Extension',
                     html: `<input type="text" id="dataExtName" class="swal2-input" placeholder="Data Extension Name">
                         <input type="text" id="dataExtRef" class="swal2-input" placeholder="Data Extension Ref">
@@ -370,10 +370,10 @@
 
                     }
                 }).then((result) => {
-                    Swal.showLoading()
+                    Sweetalert2.showLoading()
                     if (result.isConfirmed) {
-                        var dataExtName = Swal.getPopup().querySelector('#dataExtName').value;
-                        var dataExtRef = Swal.getPopup().querySelector('#dataExtRef').value;
+                        var dataExtName = Sweetalert2.getPopup().querySelector('#dataExtName').value;
+                        var dataExtRef = Sweetalert2.getPopup().querySelector('#dataExtRef').value;
                         var guestRef = getGuestRef();
                         var currClientKey = localStorage.getItem('bxDataExtensionEditorClientKey');
 
@@ -396,13 +396,13 @@
                             .then(res => {
                                 console.log("welllll " + res.success);
                                 if (res.success == true) {
-                                    Swal.fire(
+                                    Sweetalert2.fire(
                                         'Data Extension Removed',
                                         'refresh page to see...',
                                         'success'
                                     )
                                 } else {
-                                    Swal.fire(
+                                    Sweetalert2.fire(
                                         'Error Deleting Data Extension (first use the latest code from github) then if not working  Richard Flynn why ...',
                                         '',
                                         'error'
@@ -421,7 +421,7 @@
             $("#setClientKey").click(async function (event) {
                 event.preventDefault();
 
-                const { value: clientKey } = await Swal.fire({
+                const { value: clientKey } = await Sweetalert2.fire({
                     title: 'Select client key',
                     input: 'select',
                     inputOptions: clientKeyMap,
@@ -431,7 +431,7 @@
                 })
 
                 if (clientKey) {
-                    Swal.fire(`You selected: ${clientKey}`);
+                    Sweetalert2.fire(`You selected: ${clientKey}`);
                     setCurrentClientKey(clientKey);
                     $("#_currentClientKey").html(" = " + clientKeyMap[clientKey] + "");
                 }
@@ -440,7 +440,7 @@
 
             $("#deleteGuestBtn").click(async function (event) {
                 event.preventDefault();
-                Swal.fire("Coming soon");       
+                Sweetalert2.fire("Coming soon");       
             });
         }
     }
@@ -455,7 +455,7 @@
     function addClickListnerToAddGuestBtn() {
         $("#addGuestBtn").click(function (event) {
             event.preventDefault();
-            Swal.fire({
+            Sweetalert2.fire({
                 title: 'Add Guest',
                 html: `<input type="text" id="addGuestFirstName" class="swal2-input" placeholder="first name">
                         <input type="text" id="addGuestLastName" class="swal2-input" placeholder="last name">
@@ -469,16 +469,16 @@
                 showCancelButton: true,
                 showLoaderOnConfirm: true,
                 preConfirm: () => {
-                    Swal.showLoading()
+                    Sweetalert2.showLoading()
                 }
             }).then((result) => {
 
                 if (result.isConfirmed) {
 
-                    var fname = Swal.getPopup().querySelector('#addGuestFirstName').value;
-                    var lname = Swal.getPopup().querySelector('#addGuestLastName').value;
-                    var email = Swal.getPopup().querySelector('#addGuestEmail').value;
-                    var pos = Swal.getPopup().querySelector('#pos').value;
+                    var fname = Sweetalert2.getPopup().querySelector('#addGuestFirstName').value;
+                    var lname = Sweetalert2.getPopup().querySelector('#addGuestLastName').value;
+                    var email = Sweetalert2.getPopup().querySelector('#addGuestEmail').value;
+                    var pos = Sweetalert2.getPopup().querySelector('#pos').value;
                     var currClientKey = getCurrentClientKey();
 
                     fetch(CREATE_DATAEXT_LAMBDA_URL, {
@@ -500,7 +500,7 @@
                     })
                         .then(res => {
                             console.log(res);
-                            Swal.fire(
+                            Sweetalert2.fire(
                                 'Guest Created',
                                 'refresh page to see...',
                                 'success'
