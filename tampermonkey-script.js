@@ -230,18 +230,25 @@
             console.log(clientKeyNameFromUI);
             console.log(reverseClientKeyMap)
             console.log("GDE Editor CLient Key Not Supported")
+            $("<li class=\"list-group-item\"><a id=\"addNewClientBtn\"  href=\"\"> <i aria-hidden=\"true\" class=\"fas fa-info\"></i> GDE Editor Client Key Not Supported Click Here to Add <i aria-hidden=\"true\" class=\"fas fa-info-circle icon-size-18 pull-right\"><\/i><\/a><\/li>")
+                .insertAfter($("#profile-properties"));
+
+            $("#addNewClientBtn").click(async function (event) {
+                window.open("https://forms.office.com/Pages/ResponsePage.aspx?id=hAFwkRTDyU27fqQR30VqHhynldCODR1PqSCQL7lGwq5URU9VRElDMU5HRjZOTEREUU00V0lXOVc1Sy4u",
+                     '_blank').focus();
+            });
+
+
         } else {
-          
+
             if (reverseClientKeyMap[clientKeyNameFromUI] != currClientKey) {
                 setClientKeyFromUI();
                 $("#_currentClientKey").html(" = " + clientKeyMap[newClientKey] + "");
             }
 
             $("<li class=\"list-group-item\"><a id=\"addDataExtBtn\"  href=\"\"> <i aria-hidden=\"true\" class=\"fas fa-user-plus\"></i> Add GDE <i aria-hidden=\"true\" class=\"fas fa-info-circle icon-size-18 pull-right\"><\/i><\/a><\/li>" +
-            "<li class=\"list-group-item\"><a id=\"removeDataExtBtn\"  href=\"\"> <i aria-hidden=\"true\" class=\"fas fa-user-minus\"></i> Remove GDE <i aria-hidden=\"true\" class=\"fas fa-info-circle icon-size-18 pull-right\"><\/i><\/a><\/li>" +
-            "<li class=\"list-group-item\"><a id=\"setClientKey\"  href=\"\"> <i aria-hidden=\"true\" class=\"fas fa-cog\"></i> Client Key <span id=\"_currentClientKey\"> = " + clientKeyMap[currClientKey] + "</span> <i aria-hidden=\"true\" class=\"fas fa-info-circle icon-size-18 pull-right\"><\/i><\/a><\/li>" +
-            "<li class=\"list-group-item\"><a id=\"deleteGuestBtn\"  href=\"\"> <i aria-hidden=\"true\" class=\"fas fa-user-minus\"></i> Delete Guest  <i aria-hidden=\"true\" class=\"fas fa-info-circle icon-size-18 pull-right\"><\/i><\/a><\/li>")
-            .insertAfter($("#profile-properties"));
+                "<li class=\"list-group-item\"><a id=\"removeDataExtBtn\"  href=\"\"> <i aria-hidden=\"true\" class=\"fas fa-user-minus\"></i> Remove GDE <i aria-hidden=\"true\" class=\"fas fa-info-circle icon-size-18 pull-right\"><\/i><\/a><\/li>")
+                .insertAfter($("#profile-properties"));
 
             $("#addDataExtBtn").click(async function (event) {
                 event.preventDefault();
@@ -444,7 +451,7 @@
 
             $("#deleteGuestBtn").click(async function (event) {
                 event.preventDefault();
-                Sweetalert2.fire("Coming soon");       
+                Sweetalert2.fire("Coming soon");
             });
         }
     }
